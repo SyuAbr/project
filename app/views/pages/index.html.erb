@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Усыпление и кремация животных</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #f7f7f7; font-family: 'Arial', sans-serif; margin: 0; padding: 0;">
+
+<header class="container-fluid" style="background: linear-gradient(90deg, #1331BE, #8799DE); color: #fff; padding: 10px 0; position: sticky; top: 0; z-index: 1000;">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="logo">
+      <a href="#home">
+        <%= image_tag 'logo.png', alt: 'Логотип компании', style: 'max-height: 50px;' %>
+      </a>
+    </div>
+
+    <nav>
+      <ul class="nav">
+        <li class="nav-item"><a href="#services" class="nav-link text-white">Услуги</a></li>
+        <li class="nav-item"><a href="#prices" class="nav-link text-white">Цены</a></li>
+        <li class="nav-item"><a href="#contacts" class="nav-link text-white">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="contact-info">
+      <a href="https://wa.me/79198771290" class="text-white mr-3">WhatsApp</a>
+      <a href="https://t.me/+89198771290" class="text-white mr-3">Telegram</a>
+      <a href="mailto:2203568@gmail.com" class="text-white">2203568@gmail.com</a>
+    </div>
+  </div>
+</header>
+
+<section id="home" style="background: url(<%= asset_path 'background.jpg' %>) center center/cover no-repeat; height: 100vh; display: flex; align-items: center; color: #fff; text-align: center;">
+  <div class="container hero-text" style="max-width: 600px; margin: 0 auto; padding: 20px; position: relative; z-index: 2;">
+    <h1 style="margin-bottom: 20px; font-size: 2.5em; color: #293133;">Усыпление и кремация животных в Санкт-Петербурге</h1>
+    <p style="margin-bottom: 30px; font-size: 1.2em; color: #293133;">Опытный ветеринарный врач выполнит эвтаназию животного на дому и вывезет на кремацию.</p>
+    <button id="consultation-btn" class="btn btn-primary" data-toggle="modal" data-target="#consultationModal" style="background-color: #007bff; border: none; padding: 14.25px 28.5px; font-size: 1em; border-radius: 10px; position: relative; left: 20px;">Получить консультацию</button>
+  </div>
+</section>
+
+<!-- Modals -->
+<div class="modal fade" id="consultationModal" tabindex="-1" role="dialog" aria-labelledby="consultationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="consultationModalLabel">Получить консультацию</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/create_consultation" method="post" class="p-4">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+          <!-- Формовая группа для ФИО -->
+          <div class="form-group">
+            <label for="name" class="font-weight-bold">ФИО</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Введите ваше ФИО" required>
+          </div>
+
+          <!-- Формовая группа для Номера телефона -->
+          <div class="form-group">
+            <label for="phone" class="font-weight-bold">Номер телефона</label>
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Введите номер телефона" required>
+          </div>
+          <!-- Новая группа для комментария -->
+          <div class="form-group">
+            <label for="comment" class="font-weight-bold">Комментарий (необязательно)</label>
+            <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Введите ваш комментарий"></textarea>
+          </div>
+
+          <!-- Кнопки действия -->
+          <div class="text-right">
+            <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<section id="services" class="container my-5">
+  <h2 class="text-center mb-4" style="color: #004080;">Этапы нашей работы</h2>
+  <div class="row">
+    <!-- Осмотр животного -->
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="service d-flex flex-column align-items-center text-center" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 100%;">
+        <%= image_tag 'veterinarian.jpg', alt: 'Осмотр животного', style: 'max-width: 100px; margin-bottom: 20px; border-radius: 10px;' %>
+        <div>
+          <h3 style="color: #004080;">Осмотр животного</h3>
+          <p style="color: #293133;">Осмотрим животное и оценим состояние Вашего питомца, чтобы определить необходимость усыпления.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Процедура усыпления -->
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="service d-flex flex-column align-items-center text-center" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 100%;">
+        <%= image_tag 'animal.jpg', alt: 'Процедура усыпления', style: 'max-width: 100px; margin-bottom: 20px; border-radius: 10px;' %>
+        <div>
+          <h3 style="color: #004080;">Процедура усыпления</h3>
+          <p style="color: #293133;">1. Введение наркоза, который успокоит животное и снимет все болевые ощущения.<br>2. Введение специального препарата, который быстро и безболезненно останавливает дыхание и сердечную деятельность.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Кремация -->
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="service d-flex flex-column align-items-center text-center" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 100%;">
+        <%= image_tag 'cross.jpg', alt: 'Кремация', style: 'max-width: 100px; margin-bottom: 20px; border-radius: 10px;' %>
+        <div>
+          <h3 style="color: #004080;">Кремация и возврат праха</h3>
+          <p style="color: #293133;">Заберем усыпленное животное на кремацию (общую или индивидуальную), избавив Вас от лишних забот. По Вашему желанию вернем урну с прахом для сохранения, рассеивания или захоронения.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prices" class="container-fluid py-5" style="background-color: #e0f7ff; color: #000;">
+  <div class="container">
+    <h2 class="text-center mb-4" style="color: #004080;">Цены на индивидуальную кремацию</h2>
+    <table class="table table-hover text-center" style="background-color: #fff; color: #000;">
+      <thead style="background-color: #004080; color: #fff;">
+      <tr>
+        <th>Вес животного, кг</th>
+        <th>Цена (руб.)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>0 - 1</td>
+        <td>2 000,00</td>
+      </tr>
+      <tr>
+        <td>1 - 5</td>
+        <td>3 000,00</td>
+      </tr>
+      <tr>
+        <td>5 - 10</td>
+        <td>4 000,00</td>
+      </tr>
+      <tr>
+        <td>10 - 20</td>
+        <td>5 000,00</td>
+      </tr>
+      <tr>
+        <td>20 - 30</td>
+        <td>6 000,00</td>
+      </tr>
+      <tr>
+        <td>30 - 40</td>
+        <td>8 000,00</td>
+      </tr>
+      <tr>
+        <td>40 - 50</td>
+        <td>10 000,00</td>
+      </tr>
+      <tr>
+        <td>Более 50</td>
+        <td>от 14 000,00</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3 class="text-center mb-4" style="color: #004080;">Дополнительные услуги</h3>
+    <table class="table table-hover text-center" style="background-color: #fff; color: #000;">
+      <thead style="background-color: #004080; color: #fff;">
+      <tr>
+        <th>Услуга</th>
+        <th>Цена (руб.)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Фото/видеоотчёт</td>
+        <td>250 / 500</td>
+      </tr>
+      <tr>
+        <td>Доставка урны с прахом</td>
+        <td>1 000,00</td>
+      </tr>
+      <tr>
+        <td>Урна (в ассортименте)</td>
+        <td>от 100,00</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p class="text-center mt-4" style="color: #293133;">
+      Стоимость эвтаназии рассчитывается индивидуально и зависит от особенностей организма животного.
+    </p>
+  </div>
+</section>
+
+
+<section id="contacts" class="container my-5">
+  <h2 class="text-center mb-4" style="color: #004080;">Контакты</h2>
+  <div style="color: #293133;">
+    <p>Режим работы: Круглосуточно</p>
+    <p>Адрес: п. Ковалёво ул. Поперечная 19</p>
+    <p>Телефон: <a href="tel:+79198771290" class="text-dark">+7 (919) 877-12-90</a></p>
+    <p>Email: <a href="mailto:2203568@gmail.com" class="text-dark">2203568@gmail.com</a></p>
+  </div>
+</section>
+
+<footer style="background-color: #004080; color: #fff; padding: 20px 0; text-align: center;">
+  <p>&copy; 2024 ИП Лисовский И.Н.</p>
+</footer>
+
+</body>
+</html>
