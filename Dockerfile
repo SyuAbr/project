@@ -17,9 +17,10 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build gems
+# Install packages needed to build gems and compile assets
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config nodejs npm && \
+    npm install --global yarn
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -30,11 +31,15 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+# Убедиться, что скрипт исполняемый
+RUN chmod +x ./bin/rails
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+
 
 
 # Final stage for app image
