@@ -1,0 +1,15 @@
+service: euthanasia
+servers:
+  - https://euthanasia.onrender.com
+registry:
+  username: syuabr
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+builder:
+  arch: amd64
+env:
+  secret:
+    - RAILS_MASTER_KEY
+proxy:
+  ssl: false
+  host: https://euthanasia.onrender.com
