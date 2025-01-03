@@ -1,6 +1,6 @@
 service: euthanasia
 servers:
-  - https://euthanasia.onrender.com
+  - https://euthanasia-xq9o.onrender.com
 registry:
   username: syuabr
   password:
@@ -12,4 +12,4 @@ env:
     - RAILS_MASTER_KEY
 proxy:
   ssl: false
-  host: https://euthanasia.onrender.com
+  host: https://euthanasia-xq9o.onrender.com
