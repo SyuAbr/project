@@ -8,6 +8,40 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Увеличиваем шрифт в меню на 10% */
+        .nav-link {
+            font-size: 1.1em;
+        }
+
+        /* Эффект для кнопки «Получить консультацию» */
+        #consultation-btn {
+            background-color: #007bff;
+            color: white;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        #consultation-btn:hover {
+            background-color: #0056b3; /* более тёмный оттенок */
+            transform: scale(1.1);
+        }
+
+        /* Стили для прайс-листа */
+        #prices .card-header {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            text-align: center; /* Выровнять заголовок по центру */
+        }
+        #prices .table {
+            margin-bottom: 0;
+            table-layout: fixed; /* Чтобы столбцы были ровнее */
+        }
+        #prices .table td,
+        #prices .table th {
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
 </head>
 <body style="background-color: #f7f7f7; font-family: 'Arial', sans-serif; margin: 0; padding: 0;">
 
@@ -18,7 +52,6 @@
                 <img src="logo.png" alt="Логотип компании" style="max-height: 50px;">
             </a>
         </div>
-
         <nav>
             <ul class="nav">
                 <li class="nav-item"><a href="#services" class="nav-link text-white">Услуги</a></li>
@@ -34,14 +67,15 @@
     </div>
 </header>
 
-<section id="home" style="background: url('background.jpg') center center/cover no-repeat; height: 100vh; display: flex; align-items: center; color: #fff; text-align: center;">
+<section id="home" style="background: url('background.jpg') center center/cover no-repeat; height: 100vh; display: flex; align-items: center; text-align: center;">
     <div class="container hero-text" style="max-width: 600px; margin: 0 auto; padding: 20px; position: relative; z-index: 2;">
         <h1 style="margin-bottom: 20px; font-size: 2.5em; color: #293133;">Усыпление и кремация животных в Санкт-Петербурге</h1>
-        <p style="margin-bottom: 30px; font-size: 1.2em; color: #293133;">Опытный ветеринарный врач выполнит эвтаназию животного на дому и вывезет на кремацию.</p>
-        <button id="consultation-btn" class="btn btn-primary" style="background-color: #007bff; border: none; padding: 14.25px 28.5px; font-size: 1em; border-radius: 10px; position: relative; left: 20px;" onclick="window.open('https://wa.me/79198771290', '_blank')">
-        Получить консультацию
-    </button>
-
+        <p style="margin-bottom: 30px; font-size: 1.2em; color: #293133;">
+            Опытный ветеринарный врач выполнит эвтаназию животного на дому и вывезет на кремацию.
+        </p>
+        <button id="consultation-btn" class="btn" style="border: none; padding: 14.25px 28.5px; font-size: 1em; border-radius: 10px;" onclick="window.open('https://wa.me/79198771290', '_blank')">
+            Получить консультацию
+        </button>
     </div>
 </section>
 
@@ -49,28 +83,189 @@
     <h2 class="text-center mb-4" style="color: #004080;">Этапы нашей работы</h2>
     <div class="row">
         <div class="col-md-6 col-lg-4 mb-4">
-            <div class="service d-flex flex-column align-items-center text-center" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 100%;">
+            <div class="service d-flex flex-column align-items-center text-center bg-white p-4 rounded shadow-sm h-100">
                 <img src="veterinarian.jpg" alt="Осмотр животного" style="max-width: 100px; margin-bottom: 20px; border-radius: 10px;">
                 <h3 style="color: #004080;">Осмотр животного</h3>
-                <p style="color: #293133;">Осмотрим животное и оценим состояние Вашего питомца, чтобы определить необходимость усыпления.</p>
+                <p style="color: #293133;">
+                    Осмотрим животное и оценим состояние Вашего питомца, чтобы определить необходимость усыпления.
+                </p>
             </div>
         </div>
         <div class="col-md-6 col-lg-4 mb-4">
-            <div class="service d-flex flex-column align-items-center text-center" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 100%;">
+            <div class="service d-flex flex-column align-items-center text-center bg-white p-4 rounded shadow-sm h-100">
                 <img src="animal.jpg" alt="Процедура усыпления" style="max-width: 100px; margin-bottom: 20px; border-radius: 10px;">
                 <h3 style="color: #004080;">Процедура усыпления</h3>
-                <p style="color: #293133;">1. Введение наркоза, который успокоит животное и снимет все болевые ощущения.<br>2. Введение специального препарата, который быстро и безболезненно останавливает дыхание и сердечную деятельность.</p>
+                <p style="color: #293133;">
+                    1. Введение наркоза, который успокоит животное и снимет все болевые ощущения.<br>
+                    2. Введение специального препарата, который быстро и безболезненно останавливает дыхание и сердечную деятельность.
+                </p>
             </div>
         </div>
         <div class="col-md-6 col-lg-4 mb-4">
-            <div class="service d-flex flex-column align-items-center text-center" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); height: 100%;">
+            <div class="service d-flex flex-column align-items-center text-center bg-white p-4 rounded shadow-sm h-100">
                 <img src="cross.jpg" alt="Кремация" style="max-width: 100px; margin-bottom: 20px; border-radius: 10px;">
                 <h3 style="color: #004080;">Кремация и возврат праха</h3>
-                <p style="color: #293133;">Заберем усыпленное животное на кремацию (общую или индивидуальную), избавив Вас от лишних забот. По Вашему желанию вернем урну с прахом.</p>
+                <p style="color: #293133;">
+                    Заберем усыпленное животное на кремацию (общую или индивидуальную), избавив Вас от лишних забот. По Вашему желанию вернем урну с прахом.
+                </p>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Раздел с прайс-листом -->
+<section id="prices" class="container my-5">
+    <h2 class="text-center mb-4" style="color: #004080;">Прайс-лист</h2>
+
+    <!-- Усыпление домашних животных -->
+    <div class="card mb-4">
+        <div class="card-header">Усыпление домашних животных</div>
+        <div class="card-body p-0">
+            <table class="table table-bordered m-0">
+                <tbody>
+                <tr>
+                    <td>До 5 кг</td>
+                    <td>2 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 5 до 10 кг</td>
+                    <td>3 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 10 до 20 кг</td>
+                    <td>4 500 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 20 до 30 кг</td>
+                    <td>6 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 30 до 40 кг</td>
+                    <td>7 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 40 кг</td>
+                    <td>от 10 000 рублей</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Общая кремация -->
+    <div class="card mb-4">
+        <div class="card-header">Общая кремация</div>
+        <div class="card-body p-0">
+            <table class="table table-bordered m-0">
+                <tbody>
+                <tr>
+                    <td>За 1 килограмм</td>
+                    <td>50 рублей</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Индивидуальная кремация (вариант 1) -->
+    <div class="card mb-4">
+        <div class="card-header">Индивидуальная кремация</div>
+        <div class="card-body p-0">
+            <table class="table table-bordered m-0">
+                <tbody>
+                <tr>
+                    <td>До 1 кг</td>
+                    <td>не производим</td>
+                </tr>
+                <tr>
+                    <td>От 1,5 до 5 кг</td>
+                    <td>3 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 5 до 10 кг</td>
+                    <td>4 500 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 10 до 20 кг</td>
+                    <td>5 500 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 20 до 30 кг</td>
+                    <td>6 500 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 30 до 40 кг</td>
+                    <td>8 500 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 40 кг</td>
+                    <td>по договоренности</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="pl-3 mb-0"><em>*Индивидуальная кремация с личным присутствием рассчитывается отдельно</em></p>
+        </div>
+    </div>
+
+    <!-- Индивидуальная кремация (вариант 2) -->
+    <div class="card mb-4">
+        <div class="card-header">Индивидуальная кремация (альтернативная)</div>
+        <div class="card-body p-0">
+            <table class="table table-bordered m-0">
+                <tbody>
+                <tr>
+                    <td>До 5 кг</td>
+                    <td>4 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 5 кг до 40 кг</td>
+                    <td>8 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>От 40 кг</td>
+                    <td>10 000 рублей</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Прочие услуги -->
+    <div class="card mb-4">
+        <div class="card-header">Прочие услуги</div>
+        <div class="card-body p-0">
+            <table class="table table-bordered m-0">
+                <tbody>
+                <tr>
+                    <td>Урны</td>
+                    <td>от 1 500 рублей</td>
+                </tr>
+                <tr>
+                    <td>Видеоотчет при индивидуальной кремации</td>
+                    <td>2 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>Доставка урны по городу</td>
+                    <td>1 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>Присутствие на индивидуальной кремации</td>
+                    <td>2 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>Выезд по городу</td>
+                    <td>по договоренности</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="text-muted text-center" style="font-size: 0.9em;">
+        Стоимость является ориентировочной и напрямую зависит от количества вводимого препарата. Для уточнения стоимости, пожалуйста, свяжитесь с нами.
+    </p>
+</section>
+<!-- Конец раздела с прайс-листом -->
 
 <section id="contacts" class="container my-5">
     <h2 class="text-center mb-4" style="color: #004080;">Контакты</h2>
